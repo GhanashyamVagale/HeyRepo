@@ -14,7 +14,7 @@ data_dir = './repo'
 
 # configure the model
 key_num = random.randint(1, 5)
-genai.configure(api_key=os.environ['AIzaSyCaDGxWcKdbfyTqJ6lQa_MPKYqjuYM7iX0'])
+genai.configure(api_key='AIzaSyCaDGxWcKdbfyTqJ6lQa_MPKYqjuYM7iX0')
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 # State vars
