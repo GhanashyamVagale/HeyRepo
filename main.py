@@ -30,7 +30,8 @@ if "messages" not in st.session_state:
 if 'button_msg' not in st.session_state:
     st.session_state.button_msg = 'Submit'
 
-
+st.markdown(""" ## **ProspectCV:** _LLM based advanced CV-JD evaluation platform_ """)
+st.text("by Ghanashyam Vagale, Shashidhar Y Bhat & Prajwal GK [Group 47]")
 
 # Sidebar to fill the link
 with st.sidebar:
