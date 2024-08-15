@@ -6,8 +6,24 @@ from chat_utils import streamer, transform_stlit_to_genai_history
 import random
 
 
-st.set_page_config(page_title='Chat with Repo- Gemini API', page_icon="✨")
+st.set_page_config(layout="wide",page_title="HeyRepo",page_icon=":rocket:",initial_sidebar_state="expanded")
+st.markdown(
+        """
+            <style>
+                .appview-container .main .block-container {{
+                    padding-top: {padding_top}rem;
+                    padding-bottom: {padding_bottom}rem;
+                    }}
 
+            </style>""".format(
+            padding_top=2, padding_bottom=1
+        ),
+        unsafe_allow_html=True,
+    )
+
+st.markdown(""" ## **HeyRepo:** _LLM based advanced Github Repository interaction and analysis platform_ """)
+st.text("by Ghanashyam Vagale")
+st.divider()
 
 # Repo cloning path
 data_dir = './repo'
@@ -22,7 +38,7 @@ if "repo_details" not in st.session_state:
     st.session_state.repo_details = {'name': '', 'files2code': {}, 'is_entire_code_loaded': -1, 'entire_code': ''}
 
 if 'title' not in st.session_state:
-    st.session_state.title = 'Fill the GitHub Repository link in the sidebar'
+    st.session_state.title = ''
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -30,11 +46,11 @@ if "messages" not in st.session_state:
 if 'button_msg' not in st.session_state:
     st.session_state.button_msg = 'Submit'
 
-st.markdown(""" ## **ProspectCV:** _LLM based advanced CV-JD evaluation platform_ """)
-st.text("by Ghanashyam Vagale, Shashidhar Y Bhat & Prajwal GK [Group 47]")
+
 
 # Sidebar to fill the link
 with st.sidebar:
+    st.text("Input Github Repo Link")
     repolink = st.text_input("Github Repo Link")
     if st.button(st.session_state['button_msg']):
         print("Input received:", repolink)
@@ -64,7 +80,7 @@ with st.sidebar:
             st.session_state['repo_details']['code'] = make_all_files_content_str(repo_dict)
             st.session_state['repo_details']['is_entire_code_loaded'] = -1
             
-            st.session_state['title'] = f"Chat with {reponame}(using Gemini 1.5 Flash API)"
+            st.session_state['title'] = f"Interacting with {reponame}"
             st.session_state['button_msg'] = 'Change Repo'
         else:
             st.write("Not a valid Github Repo link")
